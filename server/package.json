@@ -1,0 +1,21 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "task manager server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./src/app.js --trace-sync-io",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "4.1.2",
+    "config": "3.3.3",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "mysql2": "2.3.0",
+    "sequelize": "6.6.5",
+    "use-strict": "1.0.1"
+  }
+}

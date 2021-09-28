@@ -16,7 +16,8 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to task-manager application." });
 });
 
-require("./api/user/account.rout")(app);
+require("./api/account/account.rout")(app);
+require("./api/task/task.rout")(app);
 
 app.listen(config.port, () => {
     console.log(chalk.green(`Application is starting on ${config.port} port`));

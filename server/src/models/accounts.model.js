@@ -3,25 +3,25 @@ module.exports = (sequelize, Sequelize) => {
         ID: {
             primaryKey: true,
             autoIncrement: true,
-            type: Sequelize.INTEGER,
+            type: Sequelize.INTEGER
         },
         FIRST_NAME: {
-            type: Sequelize.STRING,
+            type: Sequelize.STRING
         },
         LAST_NAME: {
-            type: Sequelize.STRING,
+            type: Sequelize.STRING
         },
         CREATED_TASK: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.INTEGER
         },
         RESOLVED_TASK: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.INTEGER
         },
         LANGUAGES_ID: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.INTEGER
         },
         THEMES_ID: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.INTEGER
         }
     });
     return Accounts;

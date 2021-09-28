@@ -1,4 +1,4 @@
-const Account = require("./account.contoroller");
+const Account = require("./account.controller");
 const router = require("express").Router();
 
 module.exports = app => {

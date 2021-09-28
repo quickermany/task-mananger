@@ -1,11 +1,27 @@
 module.exports = (sequelize, Sequelize) => {
     const Accounts = sequelize.define("accounts", {
-        id: {
+        ID: {
             primaryKey: true,
-            type: Sequelize.STRING
+            autoIncrement: true,
+            type: Sequelize.INTEGER,
         },
-        name: {
-            type: Sequelize.STRING
+        FIRST_NAME: {
+            type: Sequelize.STRING,
+        },
+        LAST_NAME: {
+            type: Sequelize.STRING,
+        },
+        CREATED_TASK: {
+            type: Sequelize.INTEGER,
+        },
+        RESOLVED_TASK: {
+            type: Sequelize.INTEGER,
+        },
+        LANGUAGES_ID: {
+            type: Sequelize.INTEGER,
+        },
+        THEMES_ID: {
+            type: Sequelize.INTEGER,
         }
     });
     return Accounts;

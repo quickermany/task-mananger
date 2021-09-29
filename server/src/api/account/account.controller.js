@@ -10,6 +10,17 @@ findAll = async (req, res) => {
     }
 }
 
+create = async (req, res) => {
+    try {
+        await AccountService.create(req.body);
+        res.status(201).send();
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+}
+
 module.exports = {
     findAll: findAll,
+    create: create
 };

@@ -10,6 +10,16 @@ findAll = async (req, res) => {
     }
 }
 
+findByPk = async (req, res) => {
+    try {
+        const account = await AccountService.findByPk(req.params.id);
+        res.status(200).send(account)
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+}
+
 create = async (req, res) => {
     try {
         await AccountService.create(req.body);
@@ -22,5 +32,6 @@ create = async (req, res) => {
 
 module.exports = {
     findAll: findAll,
-    create: create
+    create: create,
+    findByPk: findByPk
 };

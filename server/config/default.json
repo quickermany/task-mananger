@@ -1,10 +1,11 @@
 {
   "dev": {
-    "port": 3000,
+    "port": 5000,
+    "clientId": "1015921157133-fb5hrl8prho084g93bj0jtj4qa9mdals.apps.googleusercontent.com",
     "dbConfig": {
       "HOST": "localhost",
       "USER": "root",
-      "PASSWORD": "root",
+      "PASSWORD": "Root123/321",
       "DB": "task_manager",
       "dialect": "mysql",
       "pool": {

@@ -1,0 +1,16 @@
+{
+  "home": "Home",
+  "account": "Account",
+  "language": "Language",
+  "theme": {
+    "title": "Theme",
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search"
+  },
+  "logIn": "LogIn",
+  "admin": "Admin"
+}

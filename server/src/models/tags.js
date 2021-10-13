@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const  Tags = sequelize.define("tags", {
+    const  Tags = sequelize.define("TAGS", {
         id: {
             primaryKey: true,
             autoIncrement: true,

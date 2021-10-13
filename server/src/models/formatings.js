@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const  Formatings = sequelize.define("formatings", {
+    const  Formatings = sequelize.define("FORMATINGS", {
         id: {
             primaryKey: true,
             autoIncrement: true,

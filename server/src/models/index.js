@@ -14,7 +14,8 @@ const sequelize = new Sequelize(config.dbConfig.DB, config.dbConfig.USER, config
     },
 
     define: {
-        timestamps: false
+        timestamps: false,
+        freezeTableName: true
     }
 });
 

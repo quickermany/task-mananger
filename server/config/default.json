@@ -3,10 +3,10 @@
     "port": 5000,
     "clientId": "1015921157133-fb5hrl8prho084g93bj0jtj4qa9mdals.apps.googleusercontent.com",
     "dbConfig": {
-      "HOST": "localhost",
-      "USER": "root",
-      "PASSWORD": "Root123/321",
-      "DB": "task_manager",
+      "HOST": "remotemysql.com",
+      "USER": "sJOwfTsof0",
+      "PASSWORD": "Zq7SMzdF0G",
+      "DB": "sJOwfTsof0",
       "dialect": "mysql",
       "pool": {
         "max": 5,

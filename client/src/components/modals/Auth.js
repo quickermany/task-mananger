@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Modal} from "react-bootstrap";
 import GoogleLogin from "react-google-login";
-import {Context} from "../../context";
+import {Context} from "../../utils/context";
 import {apiService} from "../../App";
 
 

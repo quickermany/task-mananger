@@ -10,6 +10,16 @@ create = async (req, res) => {
     }
 }
 
+findAllForAccount = async (req, res) => {
+    try {
+        const result = await TaskService.findAllForAccount(req.cookies.userId);
+        res.status(200).send(result);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+}
+
 findAll = async (req, res) => {
     try {
         const result = await TaskService.findAll();
@@ -19,6 +29,7 @@ findAll = async (req, res) => {
         res.status(500).send("Server error");
     }
 }
+
 
 findByPk = async (req, res) => {
     try {
@@ -67,4 +78,5 @@ module.exports = {
     update: update,
     deleteAll: deleteAll,
     checkSolution: checkSolution,
+    findAllForAccount:findAllForAccount
 };

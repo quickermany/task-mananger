@@ -3,7 +3,7 @@ import {Button, Container, Dropdown, Form, FormControl, Nav, Navbar,} from "reac
 import Auth from "../modals/Auth";
 import ThemesChoose from "../themes/ThemesChoose";
 import {useTranslation} from "react-i18next";
-import {Context} from "../../context";
+import {Context} from "../../utils/context";
 import {ACCOUNT_ROUTE, ADMIN_ROUTE, MAIN_PAGE_ROUTE} from "../../utils/consts";
 import {NavLink} from "react-router-dom";
 

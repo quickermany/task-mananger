@@ -8,19 +8,20 @@ const AccountSolution = db.AccountSolution;
 
 
 create = async (task) => {
-    const createResult =  await Tasks.create(task, {include: {model: Solutions}});
+    const createResult = await Tasks.create(task, {include: {model: Solutions}});
     const data = await Accounts.findOne({where: {id: task.accountId}});
     await Accounts.update({createdTask: data.dataValues.createdTask + 1}, {where: {id: data.dataValues.id}});
-    const topic = await Topics.findOne({where:{id: task.topicId}})
+    const topic = await Topics.findOne({where: {id: task.topicId}})
     const createdTask = createResult.dataValues;
     createdTask.topic = topic.dataValues;
     delete createdTask.solutions;
     return createdTask;
 };
 
-findAll = async () => {
+findAllForAccount = async (accountId) => {
     return Tasks.findAll({
-        attributes: ["id","title", "conditionTask"],
+        where: {accountId: accountId},
+        attributes: ["id", "title", "conditionTask"],
         include: [{
 
             model: Tags,
@@ -40,6 +41,32 @@ findAll = async () => {
             }]
     });
 };
+
+findAll = async () => {
+    return Tasks.findAll({
+        attributes: ["id", "title", "conditionTask"],
+        include: [{
+
+            model: Tags,
+            attributes: ["tagText"],
+            through: {
+                attributes: [],
+            }
+        },
+            {
+                model: AccountSolution
+            },
+            {
+                model: Accounts
+            },
+            {
+                model: Topics
+            }]
+    });
+};
+
+
+
 
 findByPk = async (id) => {
     return Tasks.findByPk(id, {
@@ -72,9 +99,8 @@ deleteAll = async (ids) => {
 }
 
 
-
 checkSolution = async (taskId, body, accountId) => {
-    const taskSolution = await AccountSolution.findOne({where: {taskId: taskId, accountId: accountId, }});
+    const taskSolution = await AccountSolution.findOne({where: {taskId: taskId, accountId: accountId,}});
     if (taskSolution) {
         return true;
     } else {
@@ -101,5 +127,6 @@ module.exports = {
     findByPk: findByPk,
     update: update,
     deleteAll: deleteAll,
-    checkSolution: checkSolution
+    checkSolution: checkSolution,
+    findAllForAccount: findAllForAccount
 }

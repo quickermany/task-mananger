@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Switch, Route, Redirect} from "react-router-dom";
 import {privateRoutes, publicRoutes} from "./route";
 import {MAIN_PAGE_ROUTE} from "../utils/consts";
-import {Context} from "../context";
+import {Context} from "../utils/context";
 
 const AppRouter = () => {
     const [context, setContext] = useContext(Context);

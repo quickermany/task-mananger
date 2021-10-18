@@ -1,6 +1,6 @@
 import  React, { useState, useContext } from 'react'
 import { FaStar } from "react-icons/fa"
-import {Context} from "../context";
+import {Context} from "../utils/context";
 import {Col} from "react-bootstrap";
 
 

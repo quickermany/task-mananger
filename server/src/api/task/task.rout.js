@@ -4,7 +4,8 @@ const router = require("express").Router();
 module.exports = app => {
     router.post('/', Task.create);
     router.post('/:id',Task.checkSolution);
-    router.get('/', Task.findAll);
+    router.get('/', Task.findAllForAccount);
+    router.get('/all', Task.findAll);
     router.get('/:id', Task.findByPk);
     router.put('/:id', Task.update);
     router.delete('/', Task.deleteAll);

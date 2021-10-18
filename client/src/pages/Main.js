@@ -1,10 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Accordion,Card, Col, Container, Row} from "react-bootstrap";
 import {apiService} from "../App";
-import Answer from "../components/form/Answer";
+import Answer from "../components/checkAnswer/Answer";
 import {useTranslation} from "react-i18next";
-import Rating from "../rating/Rating";
-import {Context} from "../context";
+import {Context} from "../utils/context";
 import {ToastProvider} from "react-toast-notifications";
 
 
@@ -13,7 +12,7 @@ const Main = () => {
     const  {t} = useTranslation();
     const [tasks, setTasks] = useState([])
     useEffect(async () => {
-        const tasksResponse = await apiService.get('/api/tasks');
+        const tasksResponse = await apiService.get('/api/tasks/all');
         const tasks = await tasksResponse.json()
         setTasks(tasks);
     }, [])

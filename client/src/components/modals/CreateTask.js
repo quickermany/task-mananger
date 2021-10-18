@@ -1,9 +1,8 @@
 import {Button, Col, Form, Modal, Row} from "react-bootstrap";
 import {apiService} from "../../App";
-// import "../style/modalWindow.css";
 import {Formik} from "formik";
 import {useEffect, useState} from "react";
-import {ValidationTaskFormSchemas} from "./ValidationsSchemas";
+import {ValidationTaskFormSchemas} from "./validationSchemas/ValidationsSchemas";
 import {useTranslation} from "react-i18next";
 
 
@@ -59,7 +58,7 @@ const CreateTask = (props) => {
                       isValid,
                       errors,
                   }) => (
-                    <Form onSubmit={handleSubmit} className={"form"}>
+                    <Form onSubmit={handleSubmit} className="form">
                         <Row className="mb-3">
                             <Form.Group
                                 as={Col}

@@ -1,7 +1,7 @@
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./routes/AppRouter";
 import NaviBar from "./components/navibar/Navibar";
-import {Context} from "./context";
+import {Context} from "./utils/context";
 import {useState} from "react";
 
 import ApiService from "./service/ApiService";

@@ -1,21 +1,21 @@
 module.exports = (sequelize, Sequelize) => {
-    const Ratings = sequelize.define("RATINGS", {
+    const Ratings = sequelize.define("ratings", {
         id: {
             primaryKey: true,
             autoIncrement: true,
-            field: "ID",
+            field: "id",
             type: Sequelize.INTEGER
         },
         taskId: {
-            field: "TASKS_ID",
+            field: "task_id",
             type: Sequelize.INTEGER
         },
         accountId: {
-            field: "ACCOUNTS_ID",
+            field: "account_id",
             type: Sequelize.INTEGER
         },
         rating: {
-            field: "RATING",
+            field: "rating",
             type: Sequelize.INTEGER
         }
     });

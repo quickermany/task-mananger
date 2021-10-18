@@ -1,13 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
-    const  Formatings = sequelize.define("FORMATINGS", {
+    const  Formatings = sequelize.define("formatings", {
         id: {
             primaryKey: true,
             autoIncrement: true,
-            field: "ID",
+            field: "id",
             type: Sequelize.INTEGER
         },
         textFormatings: {
-            field: "TEXT_FORMATING",
+            field: "text_formatings",
             type: Sequelize.STRING
         }
     });

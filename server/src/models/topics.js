@@ -1,13 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
-    const  Topics = sequelize.define("TOPICS", {
+    const  Topics = sequelize.define("topics", {
         id: {
             primaryKey: true,
             autoIncrement: true,
-            field: "ID",
+            field: "id",
             type: Sequelize.INTEGER
         },
         topicName: {
-            field: "TOPIC_NAME",
+            field: "topic_name",
             type: Sequelize.STRING
         }
     });

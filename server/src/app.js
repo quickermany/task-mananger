@@ -3,6 +3,8 @@ const chalk = require('chalk');
 const session = require('express-session');
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const FileStore = require('session-file-store')(session);
+const path = require('path');
 
 const app = express();
 
@@ -22,9 +24,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({
     secret: 'keyboard cat',
+    store: new FileStore({
+        path:  path.join(require('os').tmpdir(), 'sessions')
+    }),
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false, maxAge: 10000 }
+    cookie: { secure: false, maxAge: 36000000000000 }
 }));
 
 const db = require("./models");

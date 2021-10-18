@@ -8,14 +8,19 @@ const AccountSolution = db.AccountSolution;
 
 
 create = async (task) => {
-    await Tasks.create(task, {include: {model: Solutions}});
+    const createResult =  await Tasks.create(task, {include: {model: Solutions}});
     const data = await Accounts.findOne({where: {id: task.accountId}});
     await Accounts.update({createdTask: data.dataValues.createdTask + 1}, {where: {id: data.dataValues.id}});
+    const topic = await Topics.findOne({where:{id: task.topicId}})
+    const createdTask = createResult.dataValues;
+    createdTask.topic = topic.dataValues;
+    delete createdTask.solutions;
+    return createdTask;
 };
 
 findAll = async () => {
     return Tasks.findAll({
-        attributes: ["title", "conditionTask"],
+        attributes: ["id","title", "conditionTask"],
         include: [{
 
             model: Tags,
@@ -25,17 +30,20 @@ findAll = async () => {
             }
         },
             {
-                model: Solutions
+                model: AccountSolution
             },
             {
                 model: Accounts
+            },
+            {
+                model: Topics
             }]
     });
 };
 
 findByPk = async (id) => {
     return Tasks.findByPk(id, {
-        attributes: ["title", "conditionTask"],
+        attributes: ["id", "title", "conditionTask"],
         include: [{
             model: Tags,
             attributes: ["tagText"],
@@ -50,7 +58,7 @@ findByPk = async (id) => {
                 model: Accounts
             },
             {
-                model: Topics,
+                model: Topics
             }]
     });
 };
@@ -64,18 +72,19 @@ deleteAll = async (ids) => {
 }
 
 
-checkSolution = async (taskId, body) => {
-    const taskSolution = await AccountSolution.findOne({where: {taskId: taskId, accountId: body.accountId}});
+
+checkSolution = async (taskId, body, accountId) => {
+    const taskSolution = await AccountSolution.findOne({where: {taskId: taskId, accountId: accountId, }});
     if (taskSolution) {
         return true;
     } else {
         const allSolutions = await Solutions.findAll({where: {taskId: taskId}});
         const rightSolution = allSolutions.find(solution => solution.dataValues.textSolution === body.solution);
         if (rightSolution) {
-            const account = await Accounts.findByPk(body.accountId);
-            await Accounts.update({resolvedTask: account.dataValues.resolvedTask + 1}, {where: {id: body.accountId}});
+            const account = await Accounts.findByPk(accountId);
+            await Accounts.update({resolvedTask: account.dataValues.resolvedTask + 1}, {where: {id: accountId}});
             await AccountSolution.create({
-                accountId: body.accountId,
+                accountId: accountId,
                 solutionId: rightSolution.dataValues.id,
                 taskId: taskId
             });

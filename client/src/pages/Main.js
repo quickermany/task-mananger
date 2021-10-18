@@ -1,49 +1,58 @@
-import React, {useEffect, useState} from 'react';
-import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import React, {useContext, useEffect, useState} from 'react';
+import {Accordion,Card, Col, Container, Row} from "react-bootstrap";
 import {apiService} from "../App";
+import Answer from "../components/form/Answer";
+import {useTranslation} from "react-i18next";
+import Rating from "../rating/Rating";
+import {Context} from "../context";
+import {ToastProvider} from "react-toast-notifications";
 
 
 const Main = () => {
+    const [context, setContext] = useContext(Context);
+    const  {t} = useTranslation();
     const [tasks, setTasks] = useState([])
     useEffect(async () => {
-        const tasksResponse =  await apiService.get('/api/tasks');
+        const tasksResponse = await apiService.get('/api/tasks');
         const tasks = await tasksResponse.json()
         setTasks(tasks);
     }, [])
 
     return (
-        <Container fluid className={"pt-2"}>
-            <Row className={""}>
+        <Container  className={"pt-2"}>
+            <Row>
                 <Col className={" mx-2"}>
-                    <header className={"h1"}>Latest added tasks</header>
-                    {tasks.map(i => <Card className={"mt-3 mb-3"}>
-                        <Card.Header>{i.topicId}</Card.Header>
+                    <header className={"h1"}>{t("latestAddedTask")}</header>
+                    {tasks.map(i => <Card border={"success"} className={"mt-3 mb-3 w-75"}>
+                        <Card.Header  className={"h3"}>{i.topic.topicName}</Card.Header>
                         <Card.Body>
                             <Card.Title>{i.title}</Card.Title>
                             <Card.Text>
                                 {i.conditionTask}
                             </Card.Text>
-                            <Button variant="primary">Open</Button>
+                            {context?.logged && <Accordion >
+                                <Accordion.Item  eventKey="0">
+                                    <Accordion.Header>{t("tryToSolveTask")}</Accordion.Header>
+                                    <Accordion.Body className="accordion">
+                                        <ToastProvider placement='top-center'>
+                                            {!i.account_solution && <Answer
+                                        task = {i}
+                                        tasks={tasks}
+                                        setTasks={setTasks}
+                                        />}
+                                        </ToastProvider >
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>}
                         </Card.Body>
                     </Card>)}
                 </Col>
                 <Col className={" align-self-start"}>
-                    <header className={"h1"}>Highest rating</header>
-                    <Card className={"mt-3 mb-3"}>
-                        <Card.Header>Featured</Card.Header>
-                        <Card.Body>
-                            <Card.Title>Special title treatment</Card.Title>
-                            <Card.Text>
-                                With supporting text below as a natural lead-in to additional content.
-                            </Card.Text>
-                            <Button variant="primary">Open</Button>
-                        </Card.Body>
-                    </Card>
+                    <header className={"h1"}>{t("highestRating")}</header>
                 </Col>
             </Row>
         </Container>
-    )
-        ;
+    );
 };
 
 export default Main;

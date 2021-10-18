@@ -15,6 +15,28 @@ export const darkTheme = {
 
 export const GlobalStyles = createGlobalStyle`
   body {
-    background: ${({theme}) => theme.body};
-    color: ${({theme}) => theme.text};
-  }`
+    background: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.text};
+    font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
+    transition: all 0.20s linear;
+  }
+  .card{
+    background: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.text};
+    transition: all 0.20s linear;
+  }
+  .table{
+    color: ${({ theme }) => theme.text};
+    transition: all 0.20s linear;
+  }
+  .accordion{
+    background: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.text};
+    transition: all 0.20s linear;
+  }
+  .form{
+    background: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.text};
+    transition: all 0.20s linear;
+  }
+`

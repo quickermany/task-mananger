@@ -1,19 +1,20 @@
-module.exports = (sequelize, Sequelize)=> {
-    const Solutions = sequelize.define("SOLUTIONS", {
-        id:{
-            primaryKey: true,
-            autoIncrement: true,
-            field: "ID",
-            type: Sequelize.INTEGER
-        },
-        textSolution: {
-            field: "TEXT_SOLUTION",
-            type: Sequelize.STRING
-        },
-        taskId:{
-            field: "TASKS_ID",
-            type: Sequelize.INTEGER
+module.exports = (sequelize, Sequelize) => {
+    const Solutions = sequelize.define("solutions", {
+            id: {
+                primaryKey: true,
+                autoIncrement: true,
+                field: "id",
+                type: Sequelize.INTEGER
+            },
+            textSolution: {
+                field: "text_solution",
+                type: Sequelize.STRING
+            },
+            taskId: {
+                field: "task_id",
+                type: Sequelize.INTEGER
+            }
         }
-    });
+    );
     return Solutions
 };

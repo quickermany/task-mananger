@@ -35,16 +35,26 @@ db.Tags = require("./tags")(sequelize, Sequelize);
 db.Task_tags = require("./task.tags")(sequelize, Sequelize);
 
 db.Accounts.hasMany(db.Tasks, {onDelete: 'cascade'});
-db.Tasks.belongsTo(db.Accounts);
+db.Tasks.belongsTo(db.Accounts, {foreignKey: 'accounts_id'});
 
 db.Tasks.belongsToMany(db.Tags, {
-    through: db.Task_tags
+    through: db.Task_tags, foreignKey: "task_id"
+});
+db.Tags.belongsToMany(db.Tasks, {
+    through: db.Task_tags, foreignKey: "tag_id"
 });
 
-db.Tasks.hasMany(db.Solutions, {onDelete: 'cascade'});
+db.Tasks.hasMany(db.Solutions, {
+    foreignKey: 'task_id'
+});
+
+db.Solutions.belongsTo(db.Tasks);
+
 db.Tasks.hasMany(db.Ratings, {onDelete: 'cascade'});
 
 db.Topics.hasMany(db.Tasks);
 db.Tasks.belongsTo(db.Topics, {onDelete: 'cascade'});
+
+db.Tasks.hasOne(db.AccountSolution)
 
 module.exports = db;

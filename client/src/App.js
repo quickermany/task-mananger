@@ -1,12 +1,11 @@
 import {BrowserRouter} from "react-router-dom";
-import AppRouter from "./components/AppRouter";
-import NaviBar from "./components/Navibar";
+import AppRouter from "./routes/AppRouter";
+import NaviBar from "./components/navibar/Navibar";
 import {Context} from "./context";
 import {useState} from "react";
 
 import ApiService from "./service/ApiService";
 export const apiService = new ApiService();
-
 
 
 function App() {

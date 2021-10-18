@@ -4,6 +4,7 @@ import GoogleLogin from "react-google-login";
 import {Context} from "../../context";
 import {apiService} from "../../App";
 
+
 const Auth = (props) => {
     const authentificateGoogle = async (googleResponse, setContext, onHide) => {
         let body = JSON.stringify({
@@ -12,8 +13,8 @@ const Auth = (props) => {
         });
         const res = await apiService.post('/api/login', body);
         let respose = await res.json();
-        setContext(respose);
         localStorage.setItem("auth", JSON.stringify(respose));
+        setContext(respose);
         onHide();
     }
     const responseGoogle = (response) => {

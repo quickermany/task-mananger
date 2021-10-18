@@ -1,17 +1,17 @@
 module.exports = (sequelize, Sequelize) => {
-    const  Task_tags = sequelize.define("TASK_TAGS", {
+    const  Task_tags = sequelize.define("task_tags", {
         id: {
             primaryKey: true,
             autoIncrement: true,
-            field: "ID",
+            field: "id",
             type: Sequelize.INTEGER
         },
         taskId: {
-            field: "TASKS_ID",
+            field: "task_id",
             type: Sequelize.INTEGER
         },
         tagId: {
-            field: "TAGS_ID",
+            field: "tag_id",
             type: Sequelize.INTEGER
         },
     });

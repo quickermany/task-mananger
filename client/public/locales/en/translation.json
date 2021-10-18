@@ -12,5 +12,20 @@
     "placeholder": "Search"
   },
   "logIn": "LogIn",
-  "admin": "Admin"
+  "admin": "Admin",
+  "answer": "Answer",
+  "input": "Please input your answer",
+  "create": "Create",
+  "topic": "Topic",
+  "title": "Title",
+  "conditionTask": "Condition Task",
+  "solution": "Solution",
+  "choose": "Please choose a topic",
+  "delete": "Delete",
+  "createNewTask": "Create new task",
+  "createdTask": "Created Task",
+  "resolvedTask": "Resolved Task",
+  "tryToSolveTask": "Try to solve the task",
+  "latestAddedTask": "Latest added Task",
+  "highestRating": "Highest rating"
 }

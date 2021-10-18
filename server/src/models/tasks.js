@@ -1,29 +1,29 @@
 module.exports = (sequelize, Sequelize)=> {
-    const Tasks = sequelize.define("TASKS", {
+    const Tasks = sequelize.define("tasks", {
         id:{
             primaryKey: true,
             autoIncrement: true,
-            field: "ID",
+            field: "id",
             type: Sequelize.INTEGER
         },
         title: {
-            field: "TITLE",
+            field: "title",
             type: Sequelize.TEXT
         },
         conditionTask:{
-            field: "CONDITION_TASK",
+            field: "condition_task",
             type: Sequelize.TEXT
         },
         formatingsId:{
-            field: "FORMATINGS_ID",
+            field: "formatings_id",
             type: Sequelize.INTEGER
         },
         topicId:{
-            field: "TOPICS_ID",
+            field: "topics_id",
             type: Sequelize.INTEGER
         },
         accountId:{
-            field: "ACCOUNTS_ID",
+            field: "accounts_id",
             type: Sequelize.INTEGER
         },
     });

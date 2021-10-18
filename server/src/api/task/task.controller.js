@@ -2,8 +2,8 @@ const TaskService = require("../../services/task.service")
 
 create = async (req, res) => {
     try {
-        await TaskService.create(req.body);
-        res.status(201).send();
+        const createdTask = await TaskService.create(req.body);
+        res.status(201).send(createdTask);
     } catch (err) {
         console.error(err);
         res.status(500).send("Server error");
@@ -51,8 +51,8 @@ deleteAll = async (req, res) => {
 }
 checkSolution = async (req, res) => {
     try {
-       await TaskService.checkSolution(req.params.id, req.body);
-        res.status(200).send();
+        const answer = await TaskService.checkSolution(req.params.id, req.body, req.cookies.userId);
+        res.status(200).send({answer: answer});
     } catch (err) {
         console.error(err);
         res.status(500).send("Server error");

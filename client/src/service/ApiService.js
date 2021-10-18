@@ -8,8 +8,19 @@ class ApiService {
             }
         })
     }
-    async get(path){
+
+    async get(path) {
         return fetch(path);
+    }
+
+    async delete(path, body) {
+        return fetch(path, {
+            method: "DELETE",
+            body: body,
+            headers : {
+                "Content-Type": "application/json"
+            }
+        });
     }
 }
 

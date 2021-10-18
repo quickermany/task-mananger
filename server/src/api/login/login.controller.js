@@ -6,8 +6,9 @@ create = async (req, res) => {
         if (user) {
             req.session.loggedin = true;
             res.status(201);
-            res.cookie('userId', user.id, {maxAge: 900000, httpOnly: false});
+            res.cookie('userId', user.id, {maxAge: 36000000000000, httpOnly: false});
             res.json({logged: true, role: user.role, accountId: user.id});
+            req.session.accountId = user.id;
         } else {
             res.status(401).send()
         }
